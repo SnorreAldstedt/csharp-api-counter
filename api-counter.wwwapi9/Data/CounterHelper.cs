@@ -19,5 +19,27 @@ namespace api_counter.wwwapi9.Data
         }
         public static List<Counter> Counters { get; set; } = new List<Counter>();
 
+        public static List<Counter> GetAllCounters()
+        {
+            return Counters;
+        }
+
+        public static Counter? GetCounter(int id) {
+        Counter? idCounter = Counters.FirstOrDefault(c => c.Id == id);
+            return idCounter;
+
+        }
+
+        public static List<Counter> GetAllGreaterCounters(int number)
+        {
+            return Counters.FindAll(c => c.Value > number);
+        }
+
+        public static List<Counter> GetAllSmallerCounters(int number)
+        {
+            return Counters.FindAll(c => c.Value < number);
+        }
+
+
     }
 }
